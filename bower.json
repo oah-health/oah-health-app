@@ -1,0 +1,24 @@
+{
+  "name": "oah-health-app",
+  "description": "OAH Digital Clinic",
+  "main": "index.js",
+  "authors": [
+    "shyam <shyamsundar.shanmugam@wipro.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/bower_components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.5.8"
+  }
+}
