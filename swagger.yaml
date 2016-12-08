@@ -1,0 +1,169 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: OAH Health API
+  description: APIs exposed by the OAH Health application for consumption by the channel applications like mobile and SPA
+  contact:
+    name: S. Shyam Sundar
+    email: shyamsundar.shanmugam@wipro.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+basePath: /api
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /register:
+    post:
+      parameters:
+      - $ref: '#/parameters/RegisterRequest'
+      description: Registers a new patient for a visit
+      summary: Registers a patient
+      operationId: register
+      responses:
+        '200':
+          description: Successful registration
+          schema:
+            $ref: '#/definitions/RegisterResponse'
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  '/status/{registrationId}':
+    parameters:
+      - $ref: '#/parameters/registrationId'
+    get:
+      summary: Get status of a registration
+      description: Get the status of the registration and update position in the queue
+      responses:
+        '200':
+          description: Successful
+          schema:
+            $ref: '#/definitions/RegisterResponse'
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    delete:
+      summary: Remove the registration
+      description: Remove this particular registration for this visit
+      responses:
+        '204':
+          description: Successfully removed registration
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  '/profile/{user-id}':
+    parameters:
+      - $ref: '#/parameters/user-id'
+      - $ref: '#/parameters/ProfileRequest'
+    post:
+      description: Registers a new patient for a visit
+      summary: Registers a patient
+      operationId: createProfile
+      responses:
+        '201':
+          description: Profile creation successful
+          schema:
+            $ref: '#/definitions/Profile'
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      description: Registers a new patient for a visit
+      summary: Registers a patient
+      operationId: updateProfile
+      responses:
+        '202':
+          description: Profile update successful
+          schema:
+            $ref: '#/definitions/Profile'
+        default:
+          description: error payload
+          schema:
+            $ref: '#/definitions/ErrorModel'  
+parameters:
+  user-id:
+    name: user-id
+    description: Identifier for user mobile/uid
+    required: true
+    in: path
+    type: number
+  registrationId:
+    name: registrationId
+    in: path
+    required: true
+    type: number
+  RegisterRequest:
+    name: registration
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/RegisterRequest'
+  ProfileRequest:
+    name: profile
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/Profile'
+definitions:
+  Profile:
+    type: object
+    properties:
+      id:
+        description: mobile/uid whichever is available
+        type: number
+      uid:
+        type: number
+      mobile:
+        type: number
+      firstName:
+        type: string
+      lastName:
+        type: string
+      age:
+        type: number
+        minimum: 0
+        maximum: 100
+      dateOfBirth:
+        type: string
+        format: date
+  RegisterRequest:
+    type: object
+    properties:
+      mobile:
+        type: number
+      uid:
+        type: number
+  Register:
+    type: object
+    required:
+      - registrationId
+    properties:
+      registrationId:
+        type: number
+      tokenNumber:
+        type: number
+      waitTime:
+        type: number
+  RegisterResponse:
+    type: object
+    allOf: 
+      - $ref: '#/definitions/Register'
+  ErrorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
