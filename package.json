@@ -7,7 +7,6 @@
   "author": "shyam <shyamsundar.shanmugam@wipro.com>",
   "license": "MIT",
   "scripts": {
-    "start": "json-server products.json --routes routes.json",
     "watch": "gulp watch"
   },
   "devDependencies": {
