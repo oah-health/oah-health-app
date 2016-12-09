@@ -11,13 +11,14 @@
     "watch": "gulp watch"
   },
   "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7",
     "browser-sync": "^2.18.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "json-server": "^0.8.23",
-    "angular": "^1.5.8",
-    "bootstrap": "^3.3.7",
-    "angular-route": "^1.5.8"
+    "jquery": "^3.1.1",
+    "json-server": "^0.8.23"
   }
 }
