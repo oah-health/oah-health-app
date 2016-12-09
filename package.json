@@ -1,0 +1,24 @@
+{
+  "name": "oah-health-app",
+  "version": "1.0.0",
+  "description": "OAH Digital Clinic",
+  "main": "index.js",
+  "repository": "https://github.com/oah-health/oah-health-app.git",
+  "author": "shyam <shyamsundar.shanmugam@wipro.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "json-server products.json --routes routes.json",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "jquery": "^3.1.1",
+    "json-server": "^0.8.23"
+  }
+}
