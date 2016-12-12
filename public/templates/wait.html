@@ -1,4 +1,19 @@
 <div class="container-fluid row">
-  <h3>Welcome, your estimated wait time is: {{id}}</h3>
+  <h3>
+    Welcome
+    <div class="btn-group">
+      <button class="btn btn-primary dropdown toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        User <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#/create-profile/{{id}}">Create Profile</a>
+        </li>
+      </ul>
+    </div>
+  </h3>
+  <h4>Your estimated wait time: <strong>{{waitTime}}</strong></h4>
+  <h4>Patients in queue: <strong>{{patientsInQueue}}</strong></h4>
+  <h4>Token Number: <strong>{{id}}</strong></h4>
 </div>
 
