@@ -3,6 +3,3 @@
 *.lock
 !.gitignore
 node_modules
-
-public/js
-public/style
